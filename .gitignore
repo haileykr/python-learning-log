@@ -5,5 +5,8 @@
 /learning_logs/__pychache__
 /learning_logs/migrations/__pycache__
 
+/users/__pycache__
+/users/migrations/__pycache__
+
 
 /ll_env

@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -24,16 +23,13 @@ SECRET_KEY = 'django-insecure-9v$ey19i(oko93vc$o#8&xl=$5@igmoz!xkx!=mn9gq@rgb4x7
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = [
-
     # my apps
     'learning_logs',
+    'users',
 
     # default  django apps
     'django.contrib.admin',
@@ -128,3 +124,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# My Settings
+LOGIN_URL = 'users:login' 
