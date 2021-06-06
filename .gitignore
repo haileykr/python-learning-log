@@ -1,0 +1,9 @@
+/.vscode
+
+/learning_log/__pycache__
+
+/learning_logs/__pychache__
+/learning_logs/migrations/__pycache__
+
+
+/ll_env
