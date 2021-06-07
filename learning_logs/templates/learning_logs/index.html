@@ -6,12 +6,16 @@
     interested in!!!
   </p>
 
+  {% if user.is_authenticated %}
+  <h3> Hello, {{ user.username }}!</h3>
+  {% else %}
   <a
     class="btn btn-lg btn-primary"
     href="{% url 'users:register' %}"
     role="button"
     >Register &raquo;</a
   >
+  {% endif %}
 </div>
 
 {% endblock page_header %}`
