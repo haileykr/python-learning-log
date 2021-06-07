@@ -53,7 +53,6 @@ def new_topic(request):
 
     return  render(request, 'learning_logs/new_topic.html', context)
 
-
 # new entry form
 @login_required
 def new_entry(request, topic_id):
@@ -75,14 +74,15 @@ def new_entry(request, topic_id):
 
     return render(request, 'learning_logs/new_entry.html', context)
 
-
 # editing entry
 @login_required
 def edit_entry(request,entry_id):
     entry = Entry.objects.get(id=entry_id)
-
+    
+    topic = entry.topic
+    
     # Protect the edit entry from Non-Owners
-    if entry.owner != request.user:
+    if  topic.owner != request.user:
         raise Http404
     topic = entry.topic
     if request.method != 'POST':
