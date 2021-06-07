@@ -14,4 +14,4 @@ Learning Log Created with Python &amp; Django
 <br/>
 <br/>
 
-* Codes based on Chatper 18 - 20 of *Python Crash Course (Eric Matthes, 2019)
+* Codes based on Chatper 18, 19, & 20 of *Python Crash Course(Eric Matthes, 2019)*
