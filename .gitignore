@@ -10,3 +10,7 @@
 
 
 /ll_env
+
+__pychache__
+
+*.sqlite3
