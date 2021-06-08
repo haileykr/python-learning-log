@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,  get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 # Create your views here.
@@ -20,7 +20,7 @@ def topics(request):
 # shows a single topic and all its entries!
 @login_required
 def topic(request, topic_id):
-    topic = Topic.objects.get(id=topic_id)
+    topic =  get_object_or_404(Topic,id=topic_id)
 
     # Make sure the user owns the topic
     if topic.owner != request.user:
@@ -52,6 +52,31 @@ def new_topic(request):
     context = {'form': form}
 
     return  render(request, 'learning_logs/new_topic.html', context)
+
+
+
+
+
+# editing topic
+@login_required
+def edit_topic(request,topic_id):
+    topic = Topic.objects.get(id=topic_id)
+    
+    # Protect the edit entry from Non-Owners
+    if  topic.owner != request.user:
+        raise Http404
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current entry        
+        form =EntryForm(instance = topic)
+    else:
+        form = EntryForm(instance= topic, data = request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('learning_logs:topic', topic_id=topic.id)
+
+    context = {'topic': topic, 'form': form}
+
+    return render(request, 'learning_logs/edit_topic.html', context)
 
 # new entry form
 @login_required
